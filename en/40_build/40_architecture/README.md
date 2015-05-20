@@ -16,7 +16,7 @@
 1. We will merge Liferays changes to the PolitAktiv Fork / __maste__ branch.
 2. We merge the __master__ branch to the existing hook branches
 3. We create a new PolitAktiv releases branch called __PA_master[LR-Release-Tag]__ and merge the hook branches to the new release branch
-4. We release the new PolitAktiv release
+4. We release the new PolitAktiv release.
 
 ### Give sth. back
 How to provide pull requests back to liferay ...
