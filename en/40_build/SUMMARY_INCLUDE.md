@@ -1,4 +1,4 @@
-  * [Requirements Change History](40_build/change_history.md)
+  * [Change History](40_build/change_history.md)
   * [Concepts Scope](40_build/10_scope/README.md)
   * [Analysis](40_build/20_analysis/README.md)
   * [Requirements](40_build/30_requirements/README.md)

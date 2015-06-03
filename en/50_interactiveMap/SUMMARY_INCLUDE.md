@@ -1,4 +1,4 @@
-  * [GeoDiscussion Change History](50_interactiveMap/change_history.md)
+  * [Change History](50_interactiveMap/change_history.md)
   * [Concepts Scope](50_interactiveMap/10_scope/README.md)
   * [Analysis](50_interactiveMap/20_analysis/README.md)
   * [Requirements](50_interactiveMap/30_requirements/README.md)

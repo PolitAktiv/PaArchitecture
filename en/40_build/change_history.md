@@ -1,4 +1,4 @@
-#Proof of Change
+#Change History
 	
 |Version	|Author / Actor					|Date		|Change / Activity	|Status	|
 | --------  | --------------------------- 	| --------  | ----------------- | ----- |
