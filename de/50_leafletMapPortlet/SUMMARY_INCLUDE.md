@@ -1,0 +1,6 @@
+  * [Änderungshistorie](50_leafletMapPortlet/change_history.md)
+  * [Rahmenbedingungen](50_leafletMapPortlet/10_scope/README.md)
+  * [Analyse](50_leafletMapPortlet/20_analysis/README.md)
+  * [Anforderungen](50_leafletMapPortlet/30_requirements/README.md)
+  * [Architektur](50_leafletMapPortlet/40_architecture/README.md)
+  * [Umsetzung](50_leafletMapPortlet/50_realization/README.md)

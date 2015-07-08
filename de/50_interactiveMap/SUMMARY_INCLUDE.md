@@ -1,6 +1,0 @@
-  * [Änderungshistorie](50_interactiveMap/change_history.md)
-  * [Rahmenbedingungen](50_interactiveMap/10_scope/README.md)
-  * [Analyse](50_interactiveMap/20_analysis/README.md)
-  * [Anforderungen](50_interactiveMap/30_requirements/README.md)
-  * [Architektur](50_interactiveMap/40_architecture/README.md)
-  * [Umsetzung](50_interactiveMap/50_realization/README.md)
