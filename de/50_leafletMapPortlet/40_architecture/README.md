@@ -1,6 +1,108 @@
 # Architektur
 (Zwischenstand/Sammlung)
 
+
+## Oberflächenkonzept
+### Menüpunkte/UI-Komponenten
+* wir benutzen die vorhandene Aufteilung des Containers für UI-Komponenten von Leaflet
+  * je ein Container in allen 4 Ecken
+  * Floating innerhalb dieser Container
+* auf Codeebene
+  * Plugins mit UI-Komponenten bieten per Konvention eine von der Klasse 'Control' geerbte Klasse.
+  * ein Objekt der [Plugin]-Control Klasse wird dann initialisiert und einfach der Karte hinzugefügt
+  * eine der 4 Ecken wird hier spezifiziert
+### Nützliche Plugins
+* https://github.com/aratcliffe/Leaflet.contextmenu Kontextmenü
+  * bei Rechtsklick Kontextmenü öffnen
+  * gute Möglichkeit, um Interaktion unterzubringen
+* https://github.com/calvinmetcalf/leaflet-ajax Ajax-Unterstützung
+  * falls wir Ajax-Funktionalität benötigen um aus DB zu laden
+  * Liferay hat Ajax bereits
+  * sicher noch Forschung nötig
+* https://github.com/aratcliffe/Leaflet.twofingerzoom Auf Tablet und Smartphone mit zwei Fingern zoomen
+* https://github.com/turbo87/leaflet-sidebar/ Side-Bar
+  * eventuell als Marker-Popup-Ersatz
+  * noch mächtigere Version: http://turbo87.github.io/sidebar-v2/examples/gmaps.html#settings
+* https://github.com/tinuzz/leaflet-messagebox 
+  * für die Einblendung von Anweisungen oder Hilfetexten
+* https://github.com/gregallensworth/L.Control.Credits
+  * für Werbung 
+
+## Codeintegrationskonzept
+* kein tatsächlicher Plugin-Mechanismus zur Einbindung von Plugins
+* es wird einfach der entsprechende Plugin-Code geladen
+### Möglichkeit 1: alle Plugins einzeln einbinden
+* Vorteile
+  * einfacher wartbar
+  * keine zusätzlichen Tools nötig
+* Nachteile
+  * Browser muss mehr Files laden -> Geschwindigkeitseinbußen
+* Vorgehen 
+  * Plugins werden heruntergeladen und ins Liferay-Portlet-Projekt importiert
+  * liferay-portlet.xml bindet jeweils das Javascript und das CSS eines Plugins ein
+  * die Liferay jsps nutzen nutzen die Plugin-Funktionalität
+### Möglichkeit 2: ein großes Javascript-File
+* Vorteile
+  * Geschwindigkeitsgewinn
+* Nachteile
+  * schwieriger zu warten / öfter Rebuild nötig
+  * zusätzliche Tools benötigt
+### Nützliche Tools für Javascript-Code-Integration
+* Module Loaders (RequireJS/Browserify): Binden eine Art Require/Include-Funktionalität ein
+* Code-Kompressoren (uglify-js/merge-js): Minimieren Größen von Javascript-Files (Variablennamen verkürzen, Whitespaces entfernen, etc.)
+* Namenskollisions-Schutz-Tools (jake) (genutzt Leaflet): Prüft Code auf Namenskollisionen
+### Auslieferung
+* Code sollte von uns kommen
+  * keine Versionsprobleme, da fix
+  * keine Zugriffsprobleme: Quellen sind z.T. http (Nachladen von http-Responses auf https-Seite wird von Browsern gestoppt)
+* es wird empfohlen, allen Code auf einmal auszuliefern (Möglichkeit 2, s.o.)
+### eigener Leaflet-Build
+* Idee: 
+  * eigene Leaflet-Version bauen mit der stock-Funktionalität, die wir benötigen
+  * Plugins in diese Leaflet-Version mergen
+  * ausliefern
+* Problematiken
+  * Plugins liegen auf github
+    * also nicht in einem zentralen Repository
+    * haben manchmal nicht einmal ein release
+    * Code wird unterschiedlich angeboten (github-release, git-clone, Internetreferenz)
+  * Rebuild nach jeder kleinen Änderung nötig
+     
+
+## Abhängigkeitenkonzept
+### Code
+* Namenskollisionen sind wahrscheinlich (!) bereits durch die Namenskonvention der Pluginentwickler vermieden
+* Plugins selbst haben bisher keine Abhängigkeiten außer zu Leaflet
+* Leafletversion muss zu Plugins passen
+* Versionsproblematiken einzelner Plugins werden durch das Herunterladen und lokale Einbinden vermieden
+### Logik
+* Logische Überschneidungen
+  * z.B. verschiedene Plugins arbeiten mit Overlays
+  * Requirements für Interaktion werden nötig sein
+  * Konzept für Interaktion wird nötig sein
+* Event-Trigger
+  * Kontrolbefehle (Rechtsklick, Linksklick, Pfeiltasten, etc.) sind unter Umständen bereits belegt
+  * Lösungsansätze
+    * andere Tastenbelegung wählen (einfach)
+    * Funktionalität auslagern, z.B. in Kontext-Menü (falls möglich) 
+
+
+# Anmerkungen
+## Allgemeines 
+* Auf der Leaflet-Plugins Seite existiert ein Tab für third party integrations. Wenn die Liferay-Integration geklappt hat, können wir dort auf unser Portlet verlinken und Fame abstauben
+## Weitere interessante Plugins
+* https://github.com/yohanboniface/Leaflet.RevealOSM 
+  * Klick auf Karte liefert zusätzliche Informationen zu angeklicktem Ort
+* https://github.com/mlevans/leaflet-hash 
+  * direktes Springen auf Karte via URL
+  * da wir es in einem Portlet benutzen, wird das nicht so einfach zu integrieren sein
+* https://github.com/astromatic/Leaflet.TileLayer.IIP
+  * Bild statt Karte
+
+
+
+# Notizen
+
 ## Oberflächenkonzept
 ### Aufbau
 * Die Leafpad-Oberfläche hat auf html-Ebene grob folgende Container aufgeteilt:
@@ -80,23 +182,4 @@
 * in den meisten Fällen wird es sich bei diesen Kollisionen um Farben, o.Ä. handeln
 * es bietet sich an, den Plugin-CSS-Code zwar jeweils einzubinden, die Korrekturen dann allerdings auf Portlet-Ebene zentral zu verwalten
 
-
-
-## Zusammengefasst (das, was später der Inhalt dieses Files sein soll)
-
-### Oberflächenkonzept
-* wir benutzen die vorhandene Aufteilung des Containers für UI-Komponenten von Leaflet
-  * je ein Container in allen 4 Ecken
-  * Floating innerhalb dieser Container
-
-### Codeintegrationskonzept
-* Plugins werden heruntergeladen und ins Liferay-Portlet-Projekt importiert
-* liferay-portlet.xml bindet jeweils das Javascript und das CSS eines Plugins ein
-* die Liferay jsps nutzen nutzen die Plugin-Funktionalität
-
-### Abhängigkeitenkonzept
-* Namenskollisionen sind wahrscheinlich (!) bereits durch die Namenskonvention der Pluginentwickler vermieden
-* Plugins selbst haben bisher keine Abhängigkeiten außer zu Leaflet
-* Leafletversion passt zu Plugins
-* Versionsproblematiken einzelner Plugins werden durch das Herunterladen und lokale Einbinden vermieden
 
