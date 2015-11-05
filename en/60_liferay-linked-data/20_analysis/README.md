@@ -1,4 +1,4 @@
-# Analysis of the Liferay Database
+# Analysis on the Liferay Database
 ## JournalArticles (webcontents), AssetEntries, AssetTags
 * On the database level, a webcontent is called JournalArticle
 * If there are multiple versions of the same webcontent, there exists an JournalArticle entry in the database for each version, each of them with their own ID.
