@@ -27,7 +27,7 @@ SELECT DISTINCT ?assetOfWebcontent ?titel ?url max(?version) ?DK ?Schlagwort ?au
 
   # URL
   # get layout (=page) that is linked to the asset
-  ?asset vocab:LayoutOfAssetEntry ?layout
+  ?asset vocab:LayoutOfAssetEntry ?layout .
   ?layout vocab:Layout_friendlyURL ?layoutURL .
   ?layout vocab:Layout_groupId ?groupId .
   
