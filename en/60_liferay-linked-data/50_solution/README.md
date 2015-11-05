@@ -52,22 +52,27 @@ ORDER BY DESC(?url)
  
 ```
 
-## Necessary query adaptations
-### Community
+### Necessary query adaptations
+#### Community
 The query above works for a specific community "/blaubeuren". This may be changed, before running the query. Use the friendly URL of the community. For example "/inklusion-schwaebisch-gmuend"  in https://politaktiv.org/web/inklusion-schwaebisch-gmuend.
-### Server
+#### Server
 In the last BIND-statement, the server on which the query is opperating, is hard-coded. This must be changed in order to work. E.g.:
 replace "intermediate.intra.politaktiv.org/web" with "politaktiv.org/web".
 
-## Important Annotations
+### Important Annotations
 The following facts are important:
 * Since a \# starts a comment, the query above can be copied, pasted and run as it is. 
 * for every asset, there are several webcontents. Every webcontent entry resembles one version of the webcontent
 * in its current form, the query only shows assets, which have at least one asset tag 
 
 
+## Improved Browsing
+The Query above uses custom mappings (see previous chapter) for linking the data. These mappings can also be used for direct browsing: ![](customMappings.png)
+*Center Column (has Value):*
+The picture shows a part of the data of an AssetEntry which was extended by custom relations. Now all AssetTag instances that reference that specific AssetEntry can be accessed on click. Also every Layout that contains the AssetEntry can be accessed. 
 
-
+*Right Column (is Value of):*
+The picture shows that the currently seen AssetEntry is also linked by two JournalArticles, which also can by accessed by clicking.
 
 
 
