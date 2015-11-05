@@ -8,4 +8,6 @@
 {% include "./40_build/SUMMARY_INCLUDE.md" %}
 * [Leaflet-Map-Portlet for Liferay](50_leafletMapPortlet/README.md)
 {% include "./50_leafletMapPortlet/SUMMARY_INCLUDE.md" %}
+* [Linked Data in Liferay](60_liferay-linked-data/README.md)
+{% include "./60_liferay-linked-data/SUMMARY_INCLUDE.md" %}
 * [Books License](LICENSE.md)
