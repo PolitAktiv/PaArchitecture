@@ -3,4 +3,4 @@
   * [Analysis](60_liferay-linked-data/20_analysis/README.md)
   * [Requirements](60_liferay-linked-data/30_requirements/README.md)
   * [Architecture](60_liferay-linked-data/40_architecture/README.md)
-  * [Realization](60_liferay-linked-data/50_realization/README.md)
+  * [Realization](60_liferay-linked-data/50_solution/README.md)
