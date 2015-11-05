@@ -59,7 +59,7 @@ The query above works for a specific community "/blaubeuren". This may be change
 In the last BIND-statement, the server on which the query is opperating, is hard-coded. This must be changed in order to work. E.g.:
 replace "intermediate.intra.politaktiv.org/web" with "politaktiv.org/web".
 
-## Query result
+## Important Annotations
 The following facts are important:
 * Since a \# starts a comment, the query above can be copied, pasted and run as it is. 
 * for every asset, there are several webcontents. Every webcontent entry resembles one version of the webcontent
