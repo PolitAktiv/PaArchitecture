@@ -1,0 +1,2 @@
+# Requirements
+For a webcontent (JournalArticle), show the title, the actual content, the author and the version of the webcontent together with an URL that links directly towards the location of the webcontent.
