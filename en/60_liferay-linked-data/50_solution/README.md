@@ -1,4 +1,7 @@
 # Solution
+
+## Query
+
  
 ```
 SELECT DISTINCT ?assetOfWebcontent ?titel ?url max(?version) ?DK ?Schlagwort ?autor ?webcontentInhalt WHERE { 
@@ -48,4 +51,36 @@ GROUP BY ?assetOfWebcontent ?titel ?url ?DK ?Schlagwort ?autor ?webcontentInhalt
 ORDER BY DESC(?url)
  
 ```
+
+## Necessary query adaptations
+### Community
+The query above works for a specific community "/blaubeuren". This may be changed, before running the query. Use the friendly URL of the community. For example "/inklusion-schwaebisch-gmuend"  in https://politaktiv.org/web/inklusion-schwaebisch-gmuend.
+### Server
+In the last BIND-statement, the server on which the query is opperating, is hard-coded. This must be changed in order to work. E.g.:
+replace "intermediate.intra.politaktiv.org/web" with "politaktiv.org/web".
+
+## Query result
+The following facts are important:
+* Since a \# starts a comment, the query above can be copied, pasted and run as it is. 
+* for every asset, there are several webcontents. Every webcontent entry resembles one version of the webcontent
+* in its current form, the query only shows assets, which have at least one asset tag 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
