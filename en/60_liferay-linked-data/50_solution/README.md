@@ -66,6 +66,20 @@ The following facts are important:
 * in its current form, the query only shows assets, which have at least one asset tag 
 
 
+### Troubleshooting
+The query above results in an expensive calculation. In some circumstances, the server throws the following error:
+
+```
+Request Entity Too Large
+The requested resource
+/linkeddata-liferay/snorql/
+does not allow request data with GET requests, or the amount of data provided in the request exceeds the capacity limit.
+```
+
+There are ways to surround this problem (first option is prefered):
+* The "Reset" Button in the webinterface - after clicking on "Reset", the next Query will run without problems
+* deleting one line in the query that threw the error, then run the query, then insert that line again and run the query
+
 ## Improved Browsing
 The Query above uses custom mappings (see previous chapter) for linking the data. These mappings can also be used for direct browsing: ![](customMappings.png)
 *Center Column (has Value):*
