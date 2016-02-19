@@ -1,6 +1,7 @@
   * [Änderungen](99_feature_template/change_history.md)
   * [Scope](99_feature_template/10_scope/README.md)
   * [Analyse](99_feature_template/20_analysis/README.md)
+    * [Urls in Liferay](99_feature_template/20_analysis/UrlCalculationInLiferay.md)
   * [Anforderungen](99_feature_template/30_requirements/README.md)
   * [Architektur](99_feature_template/40_architecture/README.md)
   * [Realisation](99_feature_template/60_realization/README.md)
